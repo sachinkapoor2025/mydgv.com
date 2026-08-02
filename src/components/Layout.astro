@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import Footer from './Footer.astro';
+import Header from './Header.astro';
+import SEO from './SEO.astro';
+import Schema from './Schema.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schemas?: Record<string, unknown> | Record<string, unknown>[];
+  type?: 'website' | 'article';
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  ogImage,
+  noindex = false,
+  schemas = [],
+  type = 'website',
+} = Astro.props;
+
+const topLevel =
+  path === '/'
+    ? 'home'
+    : path.replace(/^\/|\/$/g, '').split('/')[0] || 'default';
+const knownOg = new Set([
+  'home',
+  'about',
+  'contact',
+  'services',
+  'faq',
+  'products',
+  'case-studies',
+  'how-we-build',
+  'insights',
+  'pricing',
+]);
+const ogSlug = knownOg.has(topLevel) ? topLevel : 'default';
+const resolvedOg = ogImage ?? `https://www.mydgv.com/og/${ogSlug}.png`;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" href="/fonts/geist-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <SEO
+      title={title}
+      description={description}
+      path={path}
+      ogImage={resolvedOg}
+      noindex={noindex}
+      type={type}
+    />
+    {schemas && <Schema schemas={schemas} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0b1426;
+  --color-ink-soft: #152033;
+  --color-accent: #38bdf8;
+  --color-accent-dark: #0ea5e9;
+  --color-surface: #f7f8fa;
+  --color-surface-elevated: #ffffff;
+  --color-muted: #4a5568;
+  --color-border: #e2e6ee;
+  --color-border-dark: #243044;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+    --bg: var(--color-surface);
+    --fg: var(--color-ink);
+    --fg-muted: var(--color-muted);
+    --card: var(--color-surface-elevated);
+    --line: var(--color-border);
+    --accent: var(--color-accent-dark);
+    --nav: var(--color-ink);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: var(--color-ink);
+      --fg: #f3f5f8;
+      --fg-muted: #a8b0bf;
+      --card: var(--color-ink-soft);
+      --line: var(--color-border-dark);
+      --accent: var(--color-accent);
+      --nav: #060a12;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 650;
+  }
+
+  p {
+    margin-block: 0.85rem;
+  }
+}
+
+@layer utilities {
+  .container-page {
+    width: min(1120px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .container-narrow {
+    width: min(760px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .prose-dgv > * + * {
+    margin-top: 1rem;
+  }
+
+  .prose-dgv h2 {
+    margin-top: 2.5rem;
+    font-size: clamp(1.4rem, 2vw, 1.75rem);
+  }
+
+  .prose-dgv h3 {
+    margin-top: 1.75rem;
+    font-size: 1.2rem;
+  }
+
+  .prose-dgv ul {
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+
+  .prose-dgv li + li {
+    margin-top: 0.4rem;
+  }
+
+  .prose-dgv a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .surface-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1.25rem;
+    border-radius: 0.5rem;
+    background: var(--accent);
+    color: #041018;
+    font-weight: 650;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.7rem 1.25rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: var(--fg);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--line);
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    filter: brightness(1.05);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100%;
+    z-index: 100;
+    background: var(--accent);
+    color: #041018;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .fade-up {
+    animation: fade-up 0.7s ease both;
+  }
+
+  .fade-up-delay {
+    animation: fade-up 0.7s ease 0.12s both;
+  }
+
+  .fade-up-delay-2 {
+    animation: fade-up 0.7s ease 0.24s both;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up,
+    .fade-up-delay,
+    .fade-up-delay-2 {
+      animation: none;
+    }
+  }
+}

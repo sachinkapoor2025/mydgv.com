@@ -1,0 +1,142 @@
+[
+  {
+    "source": "/index.html",
+    "status": "301",
+    "target": "/"
+  },
+  {
+    "source": "/ai-solutions.html",
+    "status": "301",
+    "target": "/services/ai-solutions/"
+  },
+  {
+    "source": "/services.html",
+    "status": "301",
+    "target": "/services/"
+  },
+  {
+    "source": "/products.html",
+    "status": "301",
+    "target": "/products/"
+  },
+  {
+    "source": "/insights.html",
+    "status": "301",
+    "target": "/insights/"
+  },
+  {
+    "source": "/about.html",
+    "status": "301",
+    "target": "/about/"
+  },
+  {
+    "source": "/reviews.html",
+    "status": "301",
+    "target": "/case-studies/"
+  },
+  {
+    "source": "/contact.html",
+    "status": "301",
+    "target": "/contact/"
+  },
+  {
+    "source": "/team.html",
+    "status": "301",
+    "target": "/about/team/"
+  },
+  {
+    "source": "/process.html",
+    "status": "301",
+    "target": "/how-we-build/"
+  },
+  {
+    "source": "/faq.html",
+    "status": "301",
+    "target": "/faq/"
+  },
+  {
+    "source": "/why-dgv.html",
+    "status": "301",
+    "target": "/about/why-dgv/"
+  },
+  {
+    "source": "/us-presence.html",
+    "status": "301",
+    "target": "/locations/united-states/"
+  },
+  {
+    "source": "/privacy-policy.html",
+    "status": "301",
+    "target": "/legal/privacy-policy/"
+  },
+  {
+    "source": "/terms.html",
+    "status": "301",
+    "target": "/legal/terms/"
+  },
+  {
+    "source": "/products/usarakhi.html",
+    "status": "301",
+    "target": "/products/usarakhi/"
+  },
+  {
+    "source": "/products/halloweenready.html",
+    "status": "301",
+    "target": "/products/halloweenready/"
+  },
+  {
+    "source": "/products/containersclub.html",
+    "status": "301",
+    "target": "/products/containersclub/"
+  },
+  {
+    "source": "/products/containerbazar.html",
+    "status": "301",
+    "target": "/products/containerbazar/"
+  },
+  {
+    "source": "/products/maharajachef.html",
+    "status": "301",
+    "target": "/products/maharajachef/"
+  },
+  {
+    "source": "/products/yeshola.html",
+    "status": "301",
+    "target": "/products/yeshola/"
+  },
+  {
+    "source": "/insights/ai-ecommerce-guide.html",
+    "status": "301",
+    "target": "/insights/ai-ecommerce-guide/"
+  },
+  {
+    "source": "/insights/llm-seo-guide.html",
+    "status": "301",
+    "target": "/insights/llm-seo-guide/"
+  },
+  {
+    "source": "/insights/prompt-driven-development.html",
+    "status": "301",
+    "target": "/insights/prompt-driven-development/"
+  },
+  {
+    "source": "/insights/outsource-ai-india.html",
+    "status": "301",
+    "target": "/insights/outsource-ai-india/"
+  },
+  {
+    "source": "/products/tockerplay/",
+    "status": "301",
+    "target": "/products/tickerplay/"
+  },
+  {
+    "source": "/case-studies/tockerplay/",
+    "status": "301",
+    "target": "/case-studies/tickerplay/"
+  },
+  {
+    "source": "/<*>.html",
+    "status": "301",
+    "target": "/<*>/"
+  }
+]

@@ -1,0 +1,99 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQ from '../../components/FAQ.astro';
+import PrimaryCTA from '../../components/PrimaryCTA.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { SERVICES_NAV, PAIRING_STATEMENT } from '../../lib/site';
+import { faqSchema, serviceSchema } from '../../lib/schema';
+
+const title = 'IT services overview';
+const description =
+  'AI solutions, ecommerce, marketplaces, cloud, SEO and LLM SEO — delivered AI-natively with senior review, proven on DGV-owned products.';
+
+const details: Record<string, string> = {
+  '/services/ai-solutions/': 'OpenAI, Anthropic and Gemini integrations; prompt-driven product work with a mandatory review gate.',
+  '/services/ai-agents-and-automation/': 'Workflow automation and agent patterns grounded in systems we already operate.',
+  '/services/ai-chatbots/': 'Domain-trained assistants — including US and India container logistics chatbots we shipped.',
+  '/services/ai-enabled-crm/': 'CRM flows with AI assistance for enquiry handling and follow-up, not chatbot theatre.',
+  '/services/custom-software-development/': 'Standard frameworks, full IP assignment, maintainable output any team can own.',
+  '/services/web-development/': 'Marketing sites and web apps with performance budgets and structured data built in.',
+  '/services/ecommerce-development/': 'WooCommerce, payments, custom cart UX and marketplace connectors from live stores.',
+  '/services/marketplace-development/': 'Multi-module B2B platforms and Magento multi-vendor architecture.',
+  '/services/cloud-migration/': 'AWS Lightsail/EC2 migrations, snapshot cloning, SSL and serialisation-aware cutovers.',
+  '/services/devops-and-managed-cloud/': 'Hardening, monitoring and managed cloud for stacks we know under load.',
+  '/services/seo/': 'Technical SEO, schema, programmatic landing pages with substance requirements.',
+  '/services/llm-seo/': 'Citation-ready structure for ChatGPT, Claude, Gemini, Perplexity and AI Overviews.',
+  '/services/paid-advertising/': 'Google, Meta and marketplace ads run on our own retail calendars first.',
+  '/services/data-and-analytics/': 'Measurement that respects privacy constraints and supports decisions, not vanity dashboards.',
+};
+
+const faqs = [
+  {
+    question: 'How is every service delivered AI-natively?',
+    answer:
+      'Implementation labour is prompt-driven against a written specification and codebase context. A senior engineer reviews every diff before merge. Security and dependency scans run before staging. The review gate is never skipped.',
+  },
+  {
+    question: 'Which services are strongest today?',
+    answer:
+      'Ecommerce, marketplace platforms, domain-trained AI chatbots, cloud migration, SEO and LLM SEO — each evidenced by products DGV owns.',
+  },
+  {
+    question: 'Do you staff large dedicated teams?',
+    answer:
+      'No. Two senior engineers deliver what a conventional ten-person team delivers for the kinds of product work we take on. We do not sell bench time.',
+  },
+  {
+    question: 'Where can I see country-specific pages?',
+    answer:
+      'Service × country pages ship in Phase 6. Until then, start with this hub, then contact us with your market and compliance constraints.',
+  },
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  path="/services/"
+  schemas={[
+    serviceSchema({
+      name: 'AI-native IT services',
+      description,
+      url: 'https://www.mydgv.com/services/',
+    }),
+    faqSchema(faqs),
+  ]}
+>
+  <Breadcrumbs items={[{ name: 'Services' }]} />
+  <article class="container-page py-10">
+    <div class="max-w-3xl prose-dgv">
+      <h1>Services</h1>
+      <p>
+        DGV sells AI-native IT services that have already been proven on commercial products we own. Features are added by prompt.
+        Bugs are fixed by prompt. {PAIRING_STATEMENT}
+        Every service page will include a section on how that service is delivered AI-natively, what humans still decide, and
+        realistic turnaround for a typical change.
+      </p>
+      <p>
+        Pillar pages expand in Phase 3. The cards below resolve to dedicated URLs now so internal linking and navigation stay intact.
+      </p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {
+        SERVICES_NAV.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={details[service.href] ?? 'AI-native delivery with senior review.'}
+            href={service.href}
+          />
+        ))
+      }
+    </div>
+  </article>
+  <FAQ items={faqs} />
+  <RelatedContent collection="services" tags={['services', 'ai', 'ecommerce']} />
+  <PrimaryCTA stage="mid" />
+</Layout>

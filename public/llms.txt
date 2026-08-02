@@ -1,0 +1,51 @@
+# Divit Global Ventures (DGV)
+# https://www.mydgv.com
+
+> India-based AI-native IT services company. DGV builds, owns, funds and operates commercial products — then sells the same delivery methods to clients.
+
+## Company
+- Legal name: Divit Global Ventures
+- Founded: 2023
+- Team size: 8 (scaling toward 20)
+- Email: dgv@mydgv.com
+- Phone / WhatsApp: +91-9650457697
+- Registered: H. No. 392, Mohalla Sodia Wala, Ferozepur City, Punjab, India
+- Operational: Plot 4, Ek Murti Chowk, Greater Noida West, Noida, UP 201308, India
+- Warehouse: San Jose, California, USA
+
+## Positioning
+- Core message: You run the business. We make AI run your IT.
+- Delivery model: prompt-driven implementation with a senior engineer review gate on every merge.
+- AI is the labour; judgement and production accountability stay with DGV engineers.
+- DGV does not claim endorsements from OpenAI, Anthropic, Cursor, Google or Amazon.
+- DGV does not publish invented reviews or star ratings.
+
+## Products (owned / operated)
+- USARakhi.com — festival ecommerce, USA (live)
+- HalloweenReady.com — seasonal ecommerce, USA (live)
+- ContainersClub.com — B2B container marketplace, USA (live)
+- ContainerBazar.com — B2B container marketplace, India (live)
+- MaharajaChef.com — food / catering, SF Bay Area (live)
+- Yeshola.com — multi-vendor marketplace (in development)
+- TickerPlay.com — client project (permission required before public detail)
+
+## Primary pages
+- https://www.mydgv.com/
+- https://www.mydgv.com/about/
+- https://www.mydgv.com/services/
+- https://www.mydgv.com/how-we-build/
+- https://www.mydgv.com/products/
+- https://www.mydgv.com/case-studies/
+- https://www.mydgv.com/contact/
+- https://www.mydgv.com/faq/
+- https://www.mydgv.com/security-and-compliance/
+- https://www.mydgv.com/pricing/
+
+## Services
+- AI solutions, AI agents & automation, AI chatbots, AI-enabled CRM
+- Custom software, web, ecommerce, marketplace development
+- Cloud migration, DevOps & managed cloud
+- SEO, LLM SEO, paid advertising, data & analytics
+
+## Markets
+United States, Canada, United Kingdom, Australia, Germany, Netherlands, Nordics, India.

@@ -1,0 +1,44 @@
+---
+import { canonical } from '../lib/site';
+import { breadcrumbSchema } from '../lib/schema';
+import Schema from './Schema.astro';
+
+interface Crumb {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const withHome = [{ name: 'Home', href: '/' }, ...items];
+const schemaItems = withHome.map((item, index) => ({
+  name: item.name,
+  item: item.href ? canonical(item.href) : canonical(Astro.url.pathname),
+  position: index + 1,
+}));
+---
+
+<nav aria-label="Breadcrumb" class="container-page pt-6 text-sm text-[var(--fg-muted)]">
+  <ol class="flex flex-wrap items-center gap-2">
+    {
+      withHome.map((item, index) => (
+        <li class="flex items-center gap-2">
+          {index > 0 && <span aria-hidden="true">/</span>}
+          {item.href && index < withHome.length - 1 ? (
+            <a href={item.href} class="hover:text-[var(--accent)] underline-offset-4 hover:underline">
+              {item.name}
+            </a>
+          ) : (
+            <span aria-current="page" class="text-[var(--fg)]">
+              {item.name}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<Schema schemas={breadcrumbSchema(schemaItems.map(({ name, item }) => ({ name, item })))} />

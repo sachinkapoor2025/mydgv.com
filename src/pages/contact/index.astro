@@ -1,0 +1,134 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import { ADDRESSES, SITE } from '../../lib/site';
+import { faqSchema } from '../../lib/schema';
+
+const title = 'Contact DGV';
+const description =
+  'Book a 30-minute technical call or message DGV on WhatsApp. Engineers answer — no account-manager layer. India offices and San Jose warehouse.';
+
+const faqs = [
+  {
+    question: 'Who will respond?',
+    answer: 'A DGV engineer or founder. There is no separate account-management layer screening technical questions.',
+  },
+  {
+    question: 'What should I bring to a first call?',
+    answer:
+      'A real constraint: deadline, stack, compliance need, or a URL. We would rather review something concrete than run a capabilities deck.',
+  },
+  {
+    question: 'Do you use a calendar link?',
+    answer:
+      'Cal.com scheduling will be wired when the URL is confirmed. Until then, use this form or WhatsApp and we will propose times.',
+  },
+  {
+    question: 'Which markets do you serve?',
+    answer:
+      'United States, Canada, United Kingdom, Australia, Germany, Netherlands, Nordics and India domestic work.',
+  },
+];
+---
+
+<Layout title={title} description={description} path="/contact/" schemas={[faqSchema(faqs)]}>
+  <Breadcrumbs items={[{ name: 'Contact' }]} />
+  <section class="container-page py-10">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
+      <div class="prose-dgv">
+        <h1>Contact Divit Global Ventures</h1>
+        <p>
+          Book a 30-minute technical call or message us on WhatsApp. Tell us the business outcome you need. We will tell you
+          whether AI-native delivery fits — and where it does not. Senior engineers review every line before it merges; we stay
+          financially responsible for production systems we own.
+        </p>
+        <ul>
+          <li>Email: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li>Phone / WhatsApp: <a href={SITE.whatsappUrl}>{SITE.phoneDisplay}</a></li>
+          <li>{ADDRESSES.operational.name}: {ADDRESSES.operational.line}</li>
+          <li>{ADDRESSES.warehouse.name}: {ADDRESSES.warehouse.line}</li>
+        </ul>
+        <p>
+          Prefer to read first? See <a href="/how-we-build/">how we build</a>,
+          <a href="/pricing/">pricing</a> (Phase 2) and <a href="/case-studies/">case studies</a>.
+        </p>
+      </div>
+
+      <form class="surface-card rounded-2xl p-6 md:p-8 space-y-4" method="post" action="/api/lead/" id="contact-form">
+        <input type="text" name="company_website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="source_page" value="/contact/" />
+        <input type="hidden" name="form_started_at" id="form_started_at" value="" />
+
+        <div>
+          <label class="block text-sm font-medium mb-1" for="name">Name</label>
+          <input class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="name" name="name" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="email">Work email</label>
+          <input class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="email" name="email" type="email" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="company">Company</label>
+          <input class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="company" name="company" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="country">Country</label>
+          <select class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="country" name="country">
+            <option>United States</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+            <option>Australia</option>
+            <option>Germany</option>
+            <option>India</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="service_interest">Service interest</label>
+          <select class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="service_interest" name="service_interest">
+            <option>AI solutions</option>
+            <option>Ecommerce development</option>
+            <option>Marketplace development</option>
+            <option>Cloud migration</option>
+            <option>SEO / LLM SEO</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="budget_band">Budget band</label>
+          <select class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="budget_band" name="budget_band">
+            <option>Under $10k</option>
+            <option>$10k–$25k</option>
+            <option>$25k–$75k</option>
+            <option>$75k+</option>
+            <option>Retainer / ongoing</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="timeline">Timeline</label>
+          <select class="w-full min-h-11 rounded-lg border border-[var(--line)] bg-transparent px-3" id="timeline" name="timeline">
+            <option>ASAP</option>
+            <option>This quarter</option>
+            <option>This half</option>
+            <option>Exploring</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="message">Message</label>
+          <textarea class="w-full rounded-lg border border-[var(--line)] bg-transparent px-3 py-2" id="message" name="message" rows="5" required></textarea>
+        </div>
+        <p class="text-xs text-[var(--fg-muted)] m-0">
+          Phase 1 note: submissions post to <code>/api/lead/</code>, which will be fully wired with Turnstile, D1 and email in Phase 5.
+          Until then, also reach us on WhatsApp or email.
+        </p>
+        <button class="btn-primary w-full" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+  <FAQ items={faqs} />
+</Layout>
+
+<script is:inline>
+  document.getElementById('form_started_at').value = String(Date.now());
+</script>
