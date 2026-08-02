@@ -11,8 +11,9 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    # @astrojs/node standalone emits dist/client + dist/server
-    baseDirectory: dist
+    # @astrojs/node standalone: static HTML/assets are in dist/client
+    # (dist/server is for SSR compute; Amplify static hosting must serve client)
+    baseDirectory: dist/client
     files:
       - '**/*'
   cache:
