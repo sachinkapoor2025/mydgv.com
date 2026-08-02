@@ -1,0 +1,30 @@
+---
+import { getRelated } from '../lib/related';
+
+interface Props {
+  collection: string;
+  tags?: string[];
+  title?: string;
+}
+
+const { collection, tags = [], title = 'Related reading' } = Astro.props;
+const items = getRelated(collection, tags);
+---
+
+<section class="container-page py-12" aria-labelledby="related-heading">
+  <h2 id="related-heading" class="text-2xl m-0">{title}</h2>
+  <ul class="mt-6 grid md:grid-cols-2 gap-3 list-none p-0 m-0">
+    {
+      items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="surface-card block rounded-xl px-4 py-4 no-underline hover:border-[color-mix(in_srgb,var(--accent)_45%,var(--line))]"
+          >
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,86 @@
+---
+import { SERVICES_NAV, SITE } from '../lib/site';
+
+const path = Astro.url.pathname;
+const servicesLeft = SERVICES_NAV.slice(0, 7);
+const servicesRight = SERVICES_NAV.slice(7);
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--line)] bg-[color-mix(in_srgb,var(--nav)_92%,transparent)] backdrop-blur-md">
+  <div class="container-page flex items-center justify-between gap-4 py-3">
+    <a href="/" class="flex items-center gap-3 min-h-11 no-underline">
+      <img
+        src={SITE.logo}
+        alt={`${SITE.shortName} logo`}
+        width="40"
+        height="40"
+        class="rounded-md"
+      />
+      <span class="font-semibold tracking-tight text-[var(--fg)]">
+        <span class="block text-sm leading-tight">{SITE.shortName}</span>
+        <span class="hidden sm:block text-xs text-[var(--fg-muted)] font-normal">Divit Global Ventures</span>
+      </span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden lg:flex items-center gap-1 text-sm">
+      <div class="relative group">
+        <a
+          href="/services/"
+          class:list={[
+            'inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]',
+            path.startsWith('/services/') && 'text-[var(--accent)]',
+          ]}
+        >
+          Services
+        </a>
+        <div
+          class="invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition absolute left-0 top-full pt-2 w-[560px]"
+        >
+          <div class="surface-card rounded-xl p-4 shadow-xl grid grid-cols-2 gap-2">
+            {
+              [...servicesLeft, ...servicesRight].map((item) => (
+                <a
+                  href={item.href}
+                  class="block rounded-lg px-3 py-2 no-underline text-[var(--fg)] hover:bg-[color-mix(in_srgb,var(--accent)_12%,transparent)]"
+                >
+                  {item.title}
+                </a>
+              ))
+            }
+            <a
+              href="/services/"
+              class="col-span-2 mt-1 block rounded-lg px-3 py-2 text-[var(--accent)] no-underline font-medium"
+            >
+              View all services →
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="/products/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">Products</a>
+      <a href="/case-studies/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">Case studies</a>
+      <a href="/how-we-build/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">How we build</a>
+      <a href="/about/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">About</a>
+      <a href="/insights/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">Insights</a>
+      <a href="/faq/" class="inline-flex items-center min-h-11 px-3 rounded-md no-underline hover:bg-[color-mix(in_srgb,var(--fg)_6%,transparent)]">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/contact/" class="btn-primary text-sm">Book a technical call</a>
+      <details class="lg:hidden relative">
+        <summary class="list-none inline-flex items-center justify-center min-h-11 min-w-11 rounded-md border border-[var(--line)] cursor-pointer" aria-label="Open menu">
+          <span aria-hidden="true">☰</span>
+        </summary>
+        <div class="absolute right-0 mt-2 w-72 surface-card rounded-xl p-3 shadow-xl flex flex-col gap-1">
+          <a href="/services/" class="px-3 py-2 rounded-md no-underline">Services</a>
+          <a href="/products/" class="px-3 py-2 rounded-md no-underline">Products</a>
+          <a href="/case-studies/" class="px-3 py-2 rounded-md no-underline">Case studies</a>
+          <a href="/how-we-build/" class="px-3 py-2 rounded-md no-underline">How we build</a>
+          <a href="/about/" class="px-3 py-2 rounded-md no-underline">About</a>
+          <a href="/insights/" class="px-3 py-2 rounded-md no-underline">Insights</a>
+          <a href="/faq/" class="px-3 py-2 rounded-md no-underline">FAQ</a>
+          <a href="/contact/" class="px-3 py-2 rounded-md no-underline">Contact</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

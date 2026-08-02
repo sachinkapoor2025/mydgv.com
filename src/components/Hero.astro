@@ -1,0 +1,53 @@
+---
+interface Props {
+  brand?: string;
+  title: string;
+  subtitle: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  brand = 'Divit Global Ventures',
+  title,
+  subtitle,
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-[var(--line)]">
+  <div
+    class="absolute inset-0 opacity-90"
+    style="background:
+      radial-gradient(1000px 480px at 15% -10%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 60%),
+      radial-gradient(800px 400px at 90% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+      linear-gradient(180deg, color-mix(in srgb, var(--nav) 8%, var(--bg)), var(--bg));"
+    aria-hidden="true"
+  ></div>
+  <div class="container-page relative py-16 md:py-24">
+    <p class="fade-up text-sm font-semibold tracking-[0.16em] uppercase text-[var(--accent)] m-0">
+      {brand}
+    </p>
+    <h1 class="fade-up-delay mt-4 max-w-4xl text-[clamp(2.1rem,5vw,3.6rem)] font-semibold tracking-tight m-0">
+      {title}
+    </h1>
+    <p class="fade-up-delay-2 mt-5 max-w-2xl text-lg text-[var(--fg-muted)] m-0">
+      {subtitle}
+    </p>
+    <div class="fade-up-delay-2 mt-8 flex flex-wrap gap-3">
+      <a class="btn-primary" href={primaryHref}>{primaryLabel}</a>
+      {
+        secondaryHref && secondaryLabel && (
+          <a class="btn-secondary" href={secondaryHref}>
+            {secondaryLabel}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>

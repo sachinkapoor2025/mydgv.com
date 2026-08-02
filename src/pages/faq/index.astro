@@ -1,0 +1,68 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import PrimaryCTA from '../../components/PrimaryCTA.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { faqSchema } from '../../lib/schema';
+import { SITE } from '../../lib/site';
+
+const title = 'FAQ';
+const description =
+  'Answers about DGV’s AI-native delivery model, review gates, markets, products we own, pricing posture and how to engage.';
+
+const faqs = [
+  {
+    question: 'What is Divit Global Ventures?',
+    answer:
+      'An India-based engineering company founded in 2023 that sells AI-native IT services and also builds, owns and operates commercial products across ecommerce, marketplaces and local services.',
+  },
+  {
+    question: 'What does “AI-native” mean here?',
+    answer:
+      'Nothing is built by hand as the default labour model. Features and fixes are generated from specifications via prompts, then reviewed by senior engineers before merge. AI is the labour; judgement stays human.',
+  },
+  {
+    question: 'Is AI-generated code safe?',
+    answer:
+      'It is safe only with a review gate, tests, SAST/dependency scanning and accountable owners. We document the process on AI code quality and security. Unreviewed generation is not our model.',
+  },
+  {
+    question: 'Why not just use Cursor ourselves?',
+    answer:
+      'You can, and for small internal tools you probably should. You hire DGV for judgement, architecture, security review and accountability on production systems — including failures we have already paid for on our own products.',
+  },
+  {
+    question: 'Which products does DGV own?',
+    answer:
+      'USARakhi, HalloweenReady, ContainersClub, ContainerBazar, MaharajaChef and Yeshola (in development). TickerPlay (tickerplay.com) is a client project pending written permission before public case-study detail.',
+  },
+  {
+    question: 'Do you publish client reviews or star ratings?',
+    answer:
+      'We do not invent testimonials or aggregate ratings. The previous site’s unverifiable review claims are removed. Proof is owned products and technical case studies.',
+  },
+  {
+    question: 'Where are you based?',
+    answer: `Operational office in Greater Noida West, Noida; registered office in Ferozepur, Punjab; warehouse in San Jose, California. Contact ${SITE.email} or ${SITE.phoneDisplay}.`,
+  },
+  {
+    question: 'How do we start?',
+    answer: 'Use the contact form, email or WhatsApp. Bring a URL or constraint. We will say clearly if the work is a poor fit for AI-native delivery.',
+  },
+];
+---
+
+<Layout title={title} description={description} path="/faq/" schemas={[faqSchema(faqs)]}>
+  <Breadcrumbs items={[{ name: 'FAQ' }]} />
+  <div class="container-narrow pt-10 prose-dgv">
+    <h1>Frequently asked questions</h1>
+    <p>
+      Direct answers for founders and CTOs evaluating DGV. For delivery mechanics see
+      <a href="/how-we-build/">how we build</a>; for engagement see <a href="/contact/">contact</a>.
+    </p>
+  </div>
+  <FAQ items={faqs} title="Questions buyers actually ask" />
+  <RelatedContent collection="pages" tags={['faq', 'ai', 'delivery']} />
+  <PrimaryCTA stage="mid" />
+</Layout>

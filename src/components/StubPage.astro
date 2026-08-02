@@ -1,0 +1,37 @@
+---
+import Layout from './Layout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import PrimaryCTA from './PrimaryCTA.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  heading: string;
+  phase: string;
+  summary: string;
+  crumbs: { name: string; href?: string }[];
+}
+
+const { title, description, path, heading, phase, summary, crumbs } = Astro.props;
+---
+
+<Layout title={title} description={description} path={path}>
+  <Breadcrumbs items={crumbs} />
+  <article class="container-narrow py-12 prose-dgv">
+    <p class="text-xs uppercase tracking-[0.16em] text-[var(--accent)] font-semibold m-0">{phase}</p>
+    <h1>{heading}</h1>
+    <p>{summary}</p>
+    <p>
+      This URL is reserved and indexable so internal links from Phase 1 resolve. Full-depth content ships in the phase noted above.
+      Until then, see the <a href="/services/">services overview</a>, <a href="/how-we-build/">how we build</a>, or
+      <a href="/contact/">contact DGV</a>.
+    </p>
+    <p>
+      AI delivery claims on DGV pages are always paired with judgement: senior engineers review every line before merge and remain
+      accountable for systems we own. Read
+      <a href="/how-we-build/ai-code-quality-and-security/">AI code quality and security</a>.
+    </p>
+  </article>
+  <PrimaryCTA stage="mid" />
+</Layout>

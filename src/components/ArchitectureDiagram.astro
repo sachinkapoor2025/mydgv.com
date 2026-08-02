@@ -1,0 +1,30 @@
+---
+interface Props {
+  title?: string;
+  caption?: string;
+  steps: string[];
+}
+
+const { title = 'Architecture overview', caption, steps } = Astro.props;
+---
+
+<figure class="surface-card rounded-xl p-6 m-0">
+  <figcaption class="font-semibold m-0">{title}</figcaption>
+  {
+    caption && (
+      <p class="mt-2 text-sm text-[var(--fg-muted)] m-0">{caption}</p>
+    )
+  }
+  <ol class="mt-5 grid gap-3 list-none p-0 m-0">
+    {
+      steps.map((step, index) => (
+        <li class="flex gap-3 items-start">
+          <span class="inline-flex items-center justify-center min-w-8 h-8 rounded-full bg-[color-mix(in_srgb,var(--accent)_18%,transparent)] text-sm font-semibold">
+            {index + 1}
+          </span>
+          <span class="pt-1 text-sm">{step}</span>
+        </li>
+      ))
+    }
+  </ol>
+</figure>

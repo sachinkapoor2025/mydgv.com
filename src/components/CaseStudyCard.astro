@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  href: string;
+  stat?: string;
+}
+
+const { title, summary, href, stat } = Astro.props;
+---
+
+<article class="surface-card rounded-xl p-6 h-full flex flex-col">
+  {stat && <p class="text-xs uppercase tracking-[0.14em] text-[var(--accent)] font-semibold m-0">{stat}</p>}
+  <h3 class="text-xl mt-2 m-0">
+    <a href={href} class="no-underline hover:text-[var(--accent)]">{title}</a>
+  </h3>
+  <p class="mt-3 text-sm text-[var(--fg-muted)] flex-1 m-0">{summary}</p>
+  <a href={href} class="mt-4 text-sm font-medium text-[var(--accent)] no-underline">Read the case study →</a>
+</article>

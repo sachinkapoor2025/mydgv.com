@@ -1,0 +1,37 @@
+# Legacy redirect list (reference).
+# Production on AWS Amplify: import amplify-redirects.json in Amplify Console
+# → Hosting → Redirects and rewrites. Apex→www is handled in Route 53 / Amplify domain.
+
+# Exact legacy HTML paths
+/index.html  /  301
+/ai-solutions.html  /services/ai-solutions/  301
+/services.html  /services/  301
+/products.html  /products/  301
+/insights.html  /insights/  301
+/about.html  /about/  301
+/reviews.html  /case-studies/  301
+/contact.html  /contact/  301
+/team.html  /about/team/  301
+/process.html  /how-we-build/  301
+/faq.html  /faq/  301
+/why-dgv.html  /about/why-dgv/  301
+/us-presence.html  /locations/united-states/  301
+/privacy-policy.html  /legal/privacy-policy/  301
+/terms.html  /legal/terms/  301
+/products/usarakhi.html  /products/usarakhi/  301
+/products/halloweenready.html  /products/halloweenready/  301
+/products/containersclub.html  /products/containersclub/  301
+/products/containerbazar.html  /products/containerbazar/  301
+/products/maharajachef.html  /products/maharajachef/  301
+/products/yeshola.html  /products/yeshola/  301
+/insights/ai-ecommerce-guide.html  /insights/ai-ecommerce-guide/  301
+/insights/llm-seo-guide.html  /insights/llm-seo-guide/  301
+/insights/prompt-driven-development.html  /insights/prompt-driven-development/  301
+/insights/outsource-ai-india.html  /insights/outsource-ai-india/  301
+
+# Catch-all remaining .html → directory URL (never homepage)
+/*.html  /:splat/  301
+
+# Naming correction (brief typo → tickerplay.com)
+/products/tockerplay/  /products/tickerplay/  301
+/case-studies/tockerplay/  /case-studies/tickerplay/  301

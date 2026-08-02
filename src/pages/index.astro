@@ -1,0 +1,245 @@
+---
+import Layout from '../components/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ProofPillar from '../components/ProofPillar.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
+import TrustBar from '../components/TrustBar.astro';
+import FAQ from '../components/FAQ.astro';
+import PrimaryCTA from '../components/PrimaryCTA.astro';
+import { organizationSchema, websiteSchema, faqSchema } from '../lib/schema';
+import { PAIRING_SPEED, PAIRING_STATEMENT } from '../lib/site';
+
+const title = 'AI-native IT services';
+const description =
+  'You run the business. We make AI run your IT. Prompt-driven delivery with senior review, proven on systems DGV owns and operates.';
+
+const faqs = [
+  {
+    question: 'What does AI-native delivery mean at DGV?',
+    answer:
+      'Requirements become written specifications. Specifications become structured prompts against the existing codebase. AI generates the implementation. Automated tests run. A senior engineer reviews every diff before merge. Security and dependency scans follow. Staging is a working feature, not a mockup. Then we ship. The AI is the labour; the judgement stays with engineers who also run seven commercial systems of our own.',
+  },
+  {
+    question: 'How is this different from buying Cursor and doing it ourselves?',
+    answer:
+      'For a small internal tool, you probably should. What you are buying from DGV is the judgement layer: knowing what to build, catching subtle failures (for example serialisation-aware WordPress domain swaps), architecture that survives scale, security review, and someone accountable when production breaks. Tools do not carry accountability. See our page on why not to just use Cursor yourself.',
+  },
+  {
+    question: 'Do you invent reviews or endorsement claims?',
+    answer:
+      'No. We do not publish invented testimonials, star ratings or endorsement language from OpenAI, Anthropic, Cursor, Google or Amazon. Capability statements only: we build with Claude, GPT and Cursor in production. Proof comes from systems we own.',
+  },
+  {
+    question: 'Who is DGV for?',
+    answer:
+      'Founders and CTOs in the United States, Canada, the United Kingdom, Australia, Germany and nearby markets who want ecommerce, marketplaces, AI systems or cloud work delivered without a ten-person process tax — and who value senior review over slogans.',
+  },
+  {
+    question: 'Where is AI-native delivery not a good fit?',
+    answer:
+      'Novel algorithmic research, systems needing formal verification, safety-critical software, requirements that cannot be specified in advance, and deep undocumented legacy estates. We publish the limits on purpose. It pre-qualifies work and saves everyone time.',
+  },
+];
+
+const schemas = [organizationSchema(), websiteSchema(), faqSchema(faqs)];
+---
+
+<Layout title={title} description={description} path="/" schemas={schemas}>
+  <Hero
+    title="You run the business. We make AI run your IT."
+    subtitle="Every system we build is AI-native. Features get added by prompt. Bugs get fixed by prompt. Changes that take a conventional agency a two-week sprint take us an afternoon — because senior engineers still decide what ships."
+    primaryHref="/contact/"
+    primaryLabel="Book a 30-minute technical call"
+    secondaryHref="/how-we-build/"
+    secondaryLabel="See how we build"
+  />
+
+  <section class="container-page py-12">
+    <div class="surface-card rounded-2xl p-6 md:p-8 border-[color-mix(in_srgb,var(--accent)_35%,var(--line))]">
+      <p class="text-xs uppercase tracking-[0.16em] text-[var(--accent)] font-semibold m-0">The pairing rule</p>
+      <p class="mt-3 text-lg md:text-xl m-0">{PAIRING_SPEED}</p>
+      <p class="mt-3 text-[var(--fg-muted)] m-0">{PAIRING_STATEMENT}</p>
+      <p class="mt-4 text-sm m-0">
+        Every AI claim on this site is paired with judgement. Read
+        <a href="/how-we-build/ai-code-quality-and-security/">how we review AI-generated code for quality and security</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-page py-8" aria-labelledby="pillars-heading">
+    <h2 id="pillars-heading" class="text-2xl md:text-3xl m-0">Four proof pillars</h2>
+    <p class="mt-3 max-w-3xl text-[var(--fg-muted)]">
+      Claims without owned evidence are marketing. Each pillar links to a page or product that demonstrates the point.
+    </p>
+    <div class="mt-8 grid md:grid-cols-2 gap-4">
+      <ProofPillar
+        title="No manual build"
+        claim="Systems generated from specifications, not hand-typed line by line — with a senior review gate on every merge."
+        href="/case-studies/usarakhi-ai-built-ecommerce/"
+        linkLabel="USARakhi case study"
+      />
+      <ProofPillar
+        title="No manual changes"
+        claim="Features and bug fixes delivered by prompt, in hours — reviewed before they touch production."
+        href="/how-we-build/"
+        linkLabel="How we build"
+      />
+      <ProofPillar
+        title="No wasted headcount"
+        claim="Two engineers deliver what a conventional ten-person team delivers. Small on purpose: senior people only."
+        href="/case-studies/halloweenready-stack-clone/"
+        linkLabel="HalloweenReady case study"
+      />
+      <ProofPillar
+        title="No rigid templates"
+        claim="Fully flexible — any requirement, any change, any time. Seven commercial products across multiple architectures."
+        href="/products/"
+        linkLabel="Products we operate"
+      />
+    </div>
+  </section>
+
+  <section class="container-page py-12" aria-labelledby="proof-heading">
+    <h2 id="proof-heading" class="text-2xl md:text-3xl m-0">Owned proof, not borrowed logos</h2>
+    <p class="mt-3 max-w-3xl text-[var(--fg-muted)]">
+      HalloweenReady is a complete US ecommerce operation — catalogue, payments, hosting, SSL, SEO, ads and three marketplace
+      integrations. Two people built and launched it. A conventional agency would quote a five-person team and eight to twelve weeks.
+      The second store cost a fraction of the first, because the first one built the machine.
+    </p>
+    <div class="mt-8 grid md:grid-cols-2 gap-4">
+      <CaseStudyCard
+        title="USARakhi.com"
+        stat="Festival ecommerce · USA · Live"
+        summary="100% AI-built WooCommerce store for the Indian diaspora: custom Store REST API quantity stepper, 50+ city landing pages, marketplace listings and San Jose fulfilment. Built against an immovable festival deadline."
+        href="/case-studies/usarakhi-ai-built-ecommerce/"
+      />
+      <CaseStudyCard
+        title="HalloweenReady.com"
+        stat="Stack clone · USA · Live"
+        summary="AWS Lightsail snapshot clone into a new market. Serialisation-aware domain migration, HTTPS repaired in three places, SEO rebuilt for transactional Halloween retail. Flagship proof of the AI-native model."
+        href="/case-studies/halloweenready-stack-clone/"
+      />
+    </div>
+  </section>
+
+  <section class="container-page py-8" aria-labelledby="pipeline-heading">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+      <div>
+        <h2 id="pipeline-heading" class="text-2xl md:text-3xl m-0">The eight-step pipeline</h2>
+        <p class="mt-3 text-[var(--fg-muted)]">
+          Conventional development turns a change request into backlog, sprint estimation, build, QA and three weeks of ceremony.
+          Clients spend more time managing process than getting outcomes. AI-native delivery compresses labour without removing
+          human judgement. Full detail lives on
+          <a href="/how-we-build/">how we build</a>.
+        </p>
+        <p class="text-[var(--fg-muted)]">
+          Divit Global Ventures was founded in 2023. We are an India-based engineering company — currently eight people — with an
+          operational office in Greater Noida West, a registered office in Ferozepur, and a warehouse in San Jose, California.
+          We serve buyers in the United States, Canada, the United Kingdom, Australia, Germany, the Netherlands, the Nordics and India.
+        </p>
+        <p class="text-[var(--fg-muted)]">
+          The defining fact: we do not only build software for clients. We build, own, fund and operate commercial products of our
+          own. We carry our own uptime, our own losses and our own customer support. That is rare among agencies of any size, and it
+          is the foundation of every claim on this website.
+        </p>
+      </div>
+      <ArchitectureDiagram
+        title="From specification to ship"
+        caption="The review gate is never skipped."
+        steps={[
+          'Requirement captured as a written specification',
+          'Spec converted to a structured prompt with codebase context',
+          'AI generates the implementation',
+          'Automated test suite runs',
+          'Senior engineer reviews every diff before merge',
+          'Security and dependency scan',
+          'Staging deploy — client reviews a working feature',
+          'Ship to production',
+        ]}
+      />
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section class="container-page py-14" aria-labelledby="services-heading">
+    <h2 id="services-heading" class="text-2xl md:text-3xl m-0">Services proven on live products</h2>
+    <p class="mt-3 max-w-3xl text-[var(--fg-muted)]">
+      We sell work we have already done for ourselves: ecommerce and marketplaces, domain-trained AI chatbots, cloud migration,
+      SEO and LLM SEO, paid acquisition and AI-enabled CRM. Browse the
+      <a href="/services/">full services overview</a>.
+    </p>
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ServiceCard
+        title="AI solutions"
+        description="API integrations with OpenAI, Anthropic and Gemini; workflow automation; prompt-driven product delivery with a senior review gate."
+        href="/services/ai-solutions/"
+      />
+      <ServiceCard
+        title="Ecommerce development"
+        description="WooCommerce, custom cart UX, payments, marketplace integrations and India-to-USA fulfilment patterns we run ourselves."
+        href="/services/ecommerce-development/"
+      />
+      <ServiceCard
+        title="Marketplace development"
+        description="Multi-module B2B platforms and Magento multi-vendor architecture — ContainersClub, ContainerBazar and Yeshola."
+        href="/services/marketplace-development/"
+      />
+      <ServiceCard
+        title="LLM SEO"
+        description="Structured answers, definition blocks and citation-ready pages for ChatGPT, Claude, Gemini, Perplexity and AI Overviews."
+        href="/services/llm-seo/"
+      />
+      <ServiceCard
+        title="Cloud migration"
+        description="AWS Lightsail, EC2, S3, Route 53, snapshot cloning, SSL and serialisation-aware WordPress migrations."
+        href="/services/cloud-migration/"
+      />
+      <ServiceCard
+        title="AI chatbots"
+        description="Domain-trained assistants for US and Indian container logistics — knowledge bases, retrieval and hallucination controls."
+        href="/services/ai-chatbots/"
+      />
+    </div>
+  </section>
+
+  <section class="container-page py-8">
+    <div class="surface-card rounded-2xl p-6 md:p-8">
+      <h2 class="text-2xl m-0">Honest limits</h2>
+      <p class="mt-3 text-[var(--fg-muted)] m-0">
+        AI-native delivery is not right for everything. Novel research, formal verification, safety-critical systems and
+        unknowable requirements are outside the model. Publishing where we do not fit builds more trust than any capability claim —
+        and it pre-qualifies leads.
+      </p>
+      <a class="mt-4 inline-flex text-[var(--accent)] font-medium no-underline" href="/how-we-build/what-ai-native-delivery-is-not-good-for/">
+        Where AI-native delivery is not a good fit →
+      </a>
+    </div>
+  </section>
+
+  <section class="container-page py-10 prose-dgv">
+    <h2>Why CTOs shortlist an eight-person operator</h2>
+    <p>
+      Enterprise headcount theatre does not improve merge quality. Our size is the advantage: senior people only, direct founder
+      access, no account-manager layer, no bench you pay for while waiting. Efficiency claims on this site are demonstrated with
+      owned products, never asserted as bare multiples. When we cannot substantiate a figure, we mark it for verification rather
+      than invent it.
+    </p>
+    <p>
+      We build with Claude, GPT and Cursor in production. We do not claim those companies recommend, endorse or partner with DGV.
+      We do not republish unverifiable review aggregates. If you need star ratings to buy, we are the wrong vendor. If you need
+      engineers who have already paid the cost of being wrong in production, keep reading the
+      <a href="/case-studies/">case studies</a> and <a href="/about/">about page</a>.
+    </p>
+    <p>
+      Cross-border ecommerce is not theoretical for us. Authentic goods are sourced in India, bulk-shipped to San Jose, and
+      fulfilled across the United States — alongside verified Amazon USA, Etsy USA and eBay USA seller operations. That operational
+      loop informs how we design carts, inventory, SEO and ads for clients who sell into the same markets.
+    </p>
+  </section>
+
+  <FAQ items={faqs} />
+  <PrimaryCTA stage="bottom" />
+</Layout>

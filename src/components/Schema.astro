@@ -1,0 +1,14 @@
+---
+import { toJsonLd } from '../lib/schema';
+
+interface Props {
+  schemas: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schemas } = Astro.props;
+const list = Array.isArray(schemas) ? schemas : [schemas];
+---
+
+{list.map((schema) => (
+  <script type="application/ld+json" set:html={toJsonLd(schema)} />
+))}

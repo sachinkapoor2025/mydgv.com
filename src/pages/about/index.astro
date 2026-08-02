@@ -1,0 +1,93 @@
+---
+import Layout from '../../components/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import PrimaryCTA from '../../components/PrimaryCTA.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { ADDRESSES, PAIRING_STATEMENT, SITE } from '../../lib/site';
+import { faqSchema } from '../../lib/schema';
+
+const title = 'About Divit Global Ventures';
+const description =
+  'India-based AI-native engineering company founded in 2023. Eight people who build, own and operate commercial products — then sell the same methods to clients.';
+
+const faqs = [
+  {
+    question: 'When was DGV founded?',
+    answer: 'Divit Global Ventures was founded in 2023 as a sole proprietorship, scaling toward a larger senior engineering team while staying deliberately small.',
+  },
+  {
+    question: 'Where does DGV operate from?',
+    answer: `Registered office in Ferozepur, Punjab; operational office in Greater Noida West, Noida; warehouse in San Jose, California. Contact: ${SITE.email}, ${SITE.phoneDisplay}.`,
+  },
+  {
+    question: 'Why should product ownership matter to a buyer?',
+    answer:
+      'Agencies that only bill hours never feel production pain the same way. We carry uptime, losses and support on systems we fund. That changes how we write specifications, review AI output and price retainers.',
+  },
+  {
+    question: 'How large is the team?',
+    answer:
+      'Currently eight people. We frame that as an advantage: senior people only, direct founder access, no account-manager layer.',
+  },
+];
+---
+
+<Layout title={title} description={description} path="/about/" schemas={[faqSchema(faqs)]}>
+  <Breadcrumbs items={[{ name: 'About' }]} />
+  <article class="container-narrow py-10 prose-dgv">
+    <h1>About Divit Global Ventures</h1>
+    <p>
+      Divit Global Ventures (DGV) is an India-based engineering company that sells AI-native IT services — and proves the method on
+      commercial products it builds, owns, funds and operates. Founded in 2023, we are currently eight people, organised as a sole
+      proprietorship and scaling toward twenty without becoming a staffing firm.
+    </p>
+    <p>
+      You run the business. We make AI run your IT. That sentence is not a slogan about unsupervised generation.
+      {PAIRING_STATEMENT}
+      Read <a href="/how-we-build/ai-code-quality-and-security/">AI code quality and security</a> for how the review gate works.
+    </p>
+
+    <h2>What makes DGV different</h2>
+    <p>
+      Most agencies hand over a codebase and leave. We also run USARakhi, HalloweenReady, ContainersClub, ContainerBazar,
+      MaharajaChef and Yeshola (in development). TickerPlay (tickerplay.com) is a client project and will only appear with written permission.
+      Marketplace seller accounts on Amazon USA, Etsy USA and eBay USA are verified. Fulfilment for US retail products runs through
+      our San Jose warehouse.
+    </p>
+    <p>
+      That operator loop is the spine of the site. When we talk about prompt-driven delivery, same-day features or lean teams, we
+      are describing how those systems are maintained — not a hypothetical productivity slide.
+    </p>
+
+    <h2>Locations</h2>
+    <ul>
+      <li><strong>{ADDRESSES.registered.name}:</strong> {ADDRESSES.registered.line}</li>
+      <li><strong>{ADDRESSES.operational.name}:</strong> {ADDRESSES.operational.line}</li>
+      <li><strong>{ADDRESSES.warehouse.name}:</strong> {ADDRESSES.warehouse.line}</li>
+    </ul>
+
+    <h2>Who we work with</h2>
+    <p>
+      Target markets are the United States, Canada, the United Kingdom, Australia, Germany, the Netherlands, the Nordics and India.
+      Buyers are typically founders and CTOs who want ecommerce, marketplace, AI or cloud outcomes without a process tax — and who
+      will challenge vague AI claims. Good. The pairing rule exists for them.
+    </p>
+
+    <h2>How we work</h2>
+    <p>
+      Specifications before tickets. Prompts against real codebase context. Automated tests. Senior review on every merge. Security
+      and dependency scans. Staging that shows a working feature. Ship. Details are on
+      <a href="/how-we-build/">how we build</a> and <a href="/about/how-we-work/">how we work</a>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, call or WhatsApp
+      <a href={SITE.whatsappUrl}>{SITE.phoneDisplay}</a>, or use the <a href="/contact/">contact form</a>.
+    </p>
+  </article>
+  <FAQ items={faqs} />
+  <RelatedContent collection="pages" tags={['about', 'company', 'ai']} />
+  <PrimaryCTA stage="mid" />
+</Layout>

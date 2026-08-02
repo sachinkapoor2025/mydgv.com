@@ -1,0 +1,26 @@
+---
+import { PRODUCTS } from '../lib/site';
+---
+
+<section class="border-y border-[var(--line)] bg-[color-mix(in_srgb,var(--card)_70%,transparent)]">
+  <div class="container-page py-10">
+    <p class="text-xs uppercase tracking-[0.16em] text-[var(--fg-muted)] font-semibold m-0">
+      Systems we own — our capital, our uptime
+    </p>
+    <ul class="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 list-none p-0 m-0">
+      {
+        PRODUCTS.map((product) => (
+          <li>
+            <a
+              href={product.href}
+              class="surface-card flex items-center justify-between gap-3 rounded-lg px-4 py-3 no-underline min-h-11"
+            >
+              <span class="font-medium">{product.name}</span>
+              <span class="text-xs text-[var(--fg-muted)]">{product.status}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
